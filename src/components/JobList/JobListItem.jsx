@@ -1,13 +1,16 @@
 import {
   JobListItemSection,
   Job,
+  Image,
   LocationText,
   LocationSection,
   PublicationInfo,
   PostedText,
+  LocationIcon,
 } from './JobListItem.styled';
 import starsPng from '../../images/Rating.png';
 import locationIconPng from '../../images/Location.png';
+import image from '../../images/HospitalImage.png';
 
 const JobListItem = () => {
   const posted = 'Posted 2 days ago';
@@ -17,7 +20,7 @@ const JobListItem = () => {
   const location = 'Vienna, Austria';
   return (
     <JobListItemSection>
-      <p>picture</p>
+      <Image src={image} alt="" height="66" />
       <div>
         <PublicationInfo>
           <img src={starsPng} alt="" height="10" />
@@ -26,7 +29,7 @@ const JobListItem = () => {
         <Job>{job}</Job>
         <LocationText>{departmentName}</LocationText>
         <LocationSection>
-          <img src={locationIconPng} alt="" height="18" />
+          <LocationIcon src={locationIconPng} alt="" height="18" />
           <LocationText>{location}</LocationText>
         </LocationSection>
       </div>
