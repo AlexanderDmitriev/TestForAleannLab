@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/TestForAleannLab/static/css/main.7acaea2f.css",
-    "main.js": "/TestForAleannLab/static/js/main.bce08568.js",
+    "main.css": "/TestForAleannLab/static/css/main.2dc33120.css",
+    "main.js": "/TestForAleannLab/static/js/main.10c69b8d.js",
     "static/media/HospitalImage.png": "/TestForAleannLab/static/media/HospitalImage.85d1ad819b655ffcd2f3.png",
     "index.html": "/TestForAleannLab/index.html",
-    "main.7acaea2f.css.map": "/TestForAleannLab/static/css/main.7acaea2f.css.map",
-    "main.bce08568.js.map": "/TestForAleannLab/static/js/main.bce08568.js.map"
+    "main.2dc33120.css.map": "/TestForAleannLab/static/css/main.2dc33120.css.map",
+    "main.10c69b8d.js.map": "/TestForAleannLab/static/js/main.10c69b8d.js.map"
   },
   "entrypoints": [
-    "static/css/main.7acaea2f.css",
-    "static/js/main.bce08568.js"
+    "static/css/main.2dc33120.css",
+    "static/js/main.10c69b8d.js"
   ]
 }
