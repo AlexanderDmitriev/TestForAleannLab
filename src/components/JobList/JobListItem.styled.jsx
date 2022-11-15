@@ -4,6 +4,7 @@ export const JobListItemSection = styled.div`
   display: flex;
   height: 206px;
   width: 396px;
+  background-color: #fff;
   border: 1px solid #878d9d;
   border-radius: 5px;
   box-shadow: 1px 1px 0px 0px #878d9d;
@@ -42,6 +43,7 @@ export const LocationText = styled.p`
   color: #878d9d;
   margin: 0;
   padding-bottom: 7px;
+  padding-right: 10px;
   @media screen and (min-width: 968px) {
     font-size: 16px;
   }

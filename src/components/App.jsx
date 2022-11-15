@@ -1,9 +1,12 @@
 import JobList from './JobList';
+import { Container, Wrapper } from './Container';
 
 export const App = () => {
   return (
-    <>
-      <JobList />
-    </>
+    <Wrapper>
+      <Container>
+        <JobList />
+      </Container>
+    </Wrapper>
   );
 };
