@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {theme} from '../theme';
+import { theme } from '../theme';
 
 export const JobListItemSection = styled.div`
   display: flex;
@@ -117,13 +117,12 @@ export const Stars = styled.img`
   }
 `;
 
-export const BookmarkImage = styled.img`
+export const BookmarkImage = styled.svg`
   height: 20px;
+  width: 16px;
   @media screen and (min-width: 968px) {
     margin-left: 85px;
   }
-  
-  
 `;
 
 export const ContentSection = styled.div`
