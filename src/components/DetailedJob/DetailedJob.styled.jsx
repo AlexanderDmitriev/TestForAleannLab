@@ -1,23 +1,39 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.section`
-padding: 24px 15px;
-background-color: #E6E9F2;
+  padding: 24px 15px;
+  background-color: #e6e9f2;
+`;
+
+export const DescriptionSection = styled.div`
+padding-bottom: 135px;
+`;
+
+export const JobTitle = styled.h2`
+  font-family: 'Proxima Nova';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 30px;
+  /* or 125% */
+  letter-spacing: -0.75px;
+  color: #3a4562;
 `;
 
 export const SharingSection = styled.div`
-display:flex;
-padding-bottom: 32px;
+  display: flex;
+  padding-bottom: 32px;
 `;
 
 export const SharingSectionItem = styled.div`
-display: flex;
-margin-right: 10px;
+  display: flex;
+  margin-right: 10px;
 `;
 
 export const SalaryInfoSection = styled.div`
   display: flex;
   justify-content: space-between;
+  padding-bottom: 14px;
 `;
 
 export const Salary = styled.div`
@@ -44,6 +60,17 @@ export const SalaryTitle = styled.p`
   /* identical to box height, or 133% */
   letter-spacing: -0.5625px;
   color: rgba(56, 65, 93, 0.82);
+`;
+
+export const SalaryPerYear = styled.p`
+  font-family: 'Proxima Nova';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 25px;
+  /* identical to box height, or 125% */
+  letter-spacing: -0.625px;
+  color: #3a4562;
 `;
 
 export const AdditionalInfoSubTitle = styled.p`
@@ -92,8 +119,39 @@ export const BenefitsList = styled.ul`
   }
 `;
 
+export const ApplyButton = styled.button`
+  padding: 18px 30px;
+  background-color: #384564;
+  border-radius: 8px;
+  font-family: 'Proxima Nova';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+  /* identical to box height, or 133% */
+  text-align: center;
+  text-transform: uppercase;
+  color: #ffffff;
+`;
+
+export const ApplyButtonSection = styled.div`
+text-align: center;
+`;
+
+export const Description = styled.p`
+  font-family: 'Proxima Nova';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  /* or 133% */
+  letter-spacing: -0.5625px;
+  color: rgba(56, 65, 93, 0.82);
+  margin-bottom: 14px;
+`;
+
 export const InfoSection = styled.div`
-padding-bottom: 63px;
+  padding-bottom: 63px;
 `;
 
 export const Subtitle = styled.h2`
@@ -105,33 +163,39 @@ export const Subtitle = styled.h2`
   letter-spacing: 0.413333px;
   color: #3a4562;
   padding-bottom: 22px;
-  ::after{
+  ::after {
     content: '';
-      display: block;
-      height: 1px;
-      background: #3A4562;
-      opacity: 0.13;
-      margin-top: 10px;
+    display: block;
+    height: 1px;
+    background: #3a4562;
+    opacity: 0.13;
+    margin-top: 10px;
   }
 `;
 
 export const Pictures = styled.img`
-    height: 115px;
+  height: 115px;
 `;
 
 export const PicturesListItem = styled.li`
-list-style: none;
-& li:not(:last-child) {
+  list-style: none;
+  & li:not(:last-child) {
     margin-right: 10px;
   }
 `;
 
 export const PicturesList = styled.ul`
-display: flex;
+  display: flex;
   flex-wrap: wrap;
   & li:not(:last-child) {
     margin-right: 10px;
   }
+`;
+
+export const ContactSection = styled.div`
+background-color: #2A3047;
+border-radius: 8px;
+padding: 31px 62px;
 `;
 
 export const ContactsText = styled.p`
@@ -143,7 +207,6 @@ export const ContactsText = styled.p`
   /* identical to box height, or 144% */
   letter-spacing: -0.5px;
   color: #e7eaf0;
-  background-color: black;
 `;
 
 export const ContactsTitle = styled.p`
@@ -154,5 +217,5 @@ export const ContactsTitle = styled.p`
   line-height: 19px;
   letter-spacing: 0.23619px;
   color: #e7eaf0;
-  background-color: black;
+  padding-bottom: 17px;
 `;
