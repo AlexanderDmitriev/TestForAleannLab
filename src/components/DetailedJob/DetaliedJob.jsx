@@ -1,11 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { getData } from '../../api/getJobs';
 import {
+  Wrapper,
+  SharingSection,
+  SharingSectionItem,
   SalaryInfoSection,
   Posted,
   Salary,
   SalaryTitle,
+  Subtitle,
+  InfoSection,
+  Pictures,
+  PicturesListItem,
+  PicturesList,
   AdditionalInfoSubTitle,
+  EmploymentText,
   BenefitsText,
   BenefitsList,
   ContactsText,
@@ -14,6 +23,9 @@ import {
 import { LocationIcon, LocationSection } from '../JobList/JobListItem.styled';
 import moment from 'moment';
 import locationIconPng from '../../images/Location.png';
+import shapeIconPng from '../../images/ShapeIcon.png';
+import starIconPng from '../../images/Star.png';
+import { nanoid } from 'nanoid';
 
 const DetailedJob = () => {
   const [data, setData] = useState(null);
@@ -35,10 +47,18 @@ const DetailedJob = () => {
     <>
       {loading && <div>Loading...</div>}
       {data && (
-        <>
-          <h1>Job details</h1>
-          <p>Save to my list</p>
-          <p>Share</p>
+        <Wrapper>
+          <Subtitle>Job details</Subtitle>
+          <SharingSection>
+            <SharingSectionItem>
+            <LocationIcon src={starIconPng} alt="" height="18" />
+              <SalaryTitle>Save to my list</SalaryTitle>
+            </SharingSectionItem>
+            <SharingSectionItem>
+            <LocationIcon src={shapeIconPng} alt="" height="18" />
+              <SalaryTitle>Share</SalaryTitle>
+            </SharingSectionItem>
+          </SharingSection>
           <p>
             Arbeitsmediziner/-in / Betriebsmediziner/-in (m/w/d) oder einen
             Arzt/eine Ärztin (m/w/d) für die Weiterbildung zum Facharzt/ zur
@@ -122,24 +142,33 @@ const DetailedJob = () => {
             <li>Lorem ipsum dolor sit amet.</li>
           </ul>
           <button>Apply now</button>
-          <h2>Attached images</h2>
-          <p>image</p>
-          <p>image</p>
-          <div>
-            <h2>Additional info</h2>
+          <InfoSection>
+            <Subtitle>Attached images</Subtitle>
+            <PicturesList>
+              {data[0].pictures.map(image => (
+                <PicturesListItem key={nanoid()}>
+                  <Pictures src={image} alt="" />
+                </PicturesListItem>
+              ))}
+            </PicturesList>
+          </InfoSection>
+          <InfoSection>
+            <Subtitle>Additional info</Subtitle>
             <AdditionalInfoSubTitle>Employment type</AdditionalInfoSubTitle>
-            <button>Full-time</button>
-            <button>Part-time</button>
-            <button>Temporary</button>
+            <BenefitsList>
+              {data[0].employment_type.map(employment => (
+                <EmploymentText key={employment}>{employment}</EmploymentText>
+              ))}
+            </BenefitsList>
             <AdditionalInfoSubTitle>Benefits</AdditionalInfoSubTitle>
             <BenefitsList>
               {data[0].benefits.map(benefit => (
                 <BenefitsText key={benefit}>{benefit}</BenefitsText>
               ))}
             </BenefitsList>
-          </div>
+          </InfoSection>
 
-          <h2>Contacts</h2>
+          <Subtitle>Contacts</Subtitle>
           <div>
             <ContactsTitle>{data[0].name}</ContactsTitle>
             <LocationSection>
@@ -150,7 +179,7 @@ const DetailedJob = () => {
             <ContactsText>{data[0].email}</ContactsText>
             <p>map</p>
           </div>
-        </>
+        </Wrapper>
       )}
     </>
   );
