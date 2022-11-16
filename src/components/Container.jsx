@@ -8,6 +8,7 @@ export const Container = styled.div`
 
   @media screen and (min-width: 968px) {
     width: 768px;
+    padding-top: 29px;
   }
   @media screen and (min-width: 1920px) {
     width: 1400px;
@@ -16,5 +17,5 @@ export const Container = styled.div`
 
 export const Wrapper = styled.div`
   background-color: #e6e9f2;
-  height: 100vh;
+  height: 100%;
 `;

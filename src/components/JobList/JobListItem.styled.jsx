@@ -2,18 +2,17 @@ import styled from 'styled-components';
 
 export const JobListItemSection = styled.div`
   display: flex;
-  height: 206px;
+  min-height: 206px;
   width: 396px;
   background-color: #fff;
   border: 1px solid #878d9d;
   border-radius: 5px;
   box-shadow: 1px 1px 0px 0px #878d9d;
   @media screen and (min-width: 968px) {
-    height: 164px;
+    min-height: 164px;
     width: 768px;
   }
   @media screen and (min-width: 1920px) {
-    height: 164px;
     width: 1400px;
   }
 `;
@@ -23,9 +22,13 @@ export const Image = styled.img`
   margin-top: 45px;
   margin-right: 19px;
   margin-left: 16px;
+  object-fit: cover;
   height: 66px;
+  width: 66px;
   @media screen and (min-width: 968px) {
     height: 85px;
+    width: 85px;
+    object-position: center;
   }
 `;
 
@@ -127,5 +130,6 @@ export const ContentSection = styled.div`
   @media screen and (min-width: 968px) {
     display: flex;
     align-items: center;
+    padding: 24px 0;
   }
 `;

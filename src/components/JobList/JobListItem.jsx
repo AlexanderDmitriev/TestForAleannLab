@@ -13,31 +13,33 @@ import {
 } from './JobListItem.styled';
 import starsPng from '../../images/Rating.png';
 import locationIconPng from '../../images/Location.png';
-import image from '../../images/HospitalImage.png';
 import bookmark from '../../images/Bookmark.png';
 import { useMediaQuery } from 'react-responsive';
+import moment from 'moment';
 
 const JobListItem = ({ data }) => {
-  const { posted, job, departmentName, location } = data;
+  const { createdAt, description, name, address, pictures } = data;
   const isWideScreen = useMediaQuery({ query: '(min-width: 968px)' });
+  /* const postedDate = new Date(createdAt).getTime(); */
 
   return (
     <li>
       <JobListItemSection>
-        <Image src={image} alt="" />
+        <div><Image src={pictures[0]} alt="" /></div>
+        
         <ContentSection>
           {!isWideScreen && (
             <PublicationInfo>
               <Stars src={starsPng} alt="" />
-              <PostedText>{posted}</PostedText>
+              <PostedText>{`Posted ${moment(createdAt).startOf('day').fromNow()}`}</PostedText>
             </PublicationInfo>
           )}
           <div>
-            <Job>{job}</Job>
-            <LocationText>{departmentName}</LocationText>
+            <Job>{description}</Job>
+            <LocationText>{name}</LocationText>
             <LocationSection>
               <LocationIcon src={locationIconPng} alt="" height="18" />
-              <LocationText>{location}</LocationText>
+              <LocationText>{address}</LocationText>
             </LocationSection>
           </div>
 
@@ -46,7 +48,7 @@ const JobListItem = ({ data }) => {
               <Stars src={starsPng} alt="" />
               <div>
                 <BookmarkImage src={bookmark} alt="" />
-                <PostedText>{posted}</PostedText>
+                <PostedText>{`Posted ${moment(createdAt).startOf('day').fromNow()}`}</PostedText>
               </div>
             </PublicationInfo>
           )}
