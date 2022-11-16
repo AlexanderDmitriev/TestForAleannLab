@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { theme } from '../theme';
+import { NavLink } from "react-router-dom";
 
 export const JobListItemSection = styled.div`
   display: flex;
@@ -77,7 +78,8 @@ export const PostedText = styled.p`
   }
 `;
 
-export const Job = styled.p`
+export const Job = styled(NavLink)`
+text-decoration: none;
   font-family: 'Proxima Nova';
   font-style: normal;
   font-weight: 400;
@@ -100,12 +102,18 @@ export const Job = styled.p`
   @media screen and (min-width: 1920px) {
     width: 712px;
   }
+  transition-property: color;
+  transition-duration: 300ms;
+  transition-timing-function: linear;
+  &:hover,
+  &:focus {
+    color: red;
+  }
 `;
 
 export const LocationIcon = styled.svg`
   padding-right: 8px;
   width: 13px;
-  
 `;
 
 export const Stars = styled.svg`
@@ -129,11 +137,23 @@ export const BookmarkImage = styled.svg`
   }
 `;
 
+export const BookmarkSection = styled.div`
+  text-align: right;
+`;
+
 export const ContentSection = styled.div`
   display: block;
   @media screen and (min-width: 968px) {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     padding: 24px 0;
   }
+`;
+
+export const JobInfoSection = styled.div`
+@media screen and (min-width: 968px) {
+  min-width: 468px;
+  }
+  
 `;

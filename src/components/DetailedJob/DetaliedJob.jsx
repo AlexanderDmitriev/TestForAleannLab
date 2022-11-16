@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { getData } from '../../api/getJobs';
+import React from 'react';
+import { useParams } from 'react-router-dom';
 import {
   Wrapper,
   DescriptionSection,
@@ -32,22 +32,10 @@ import moment from 'moment';
 import icons from '../../images/icons.svg';
 import { nanoid } from 'nanoid';
 
-const DetailedJob = () => {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(false);
+const DetailedJob = ({ data, loading }) => {
+  const { jobId } = useParams();
+  const jobIndex = data.findIndex(job => job.id === jobId);
 
-  useEffect(() => {
-    getData().then(response => {
-      setLoading(true);
-      if (response) {
-        console.log(response.data);
-        setData(response.data);
-        setLoading(false);
-      } else {
-        return;
-      }
-    });
-  }, []);
   return (
     <>
       {loading && <div>Loading...</div>}
@@ -56,30 +44,32 @@ const DetailedJob = () => {
           <Subtitle>Job details</Subtitle>
           <SharingSection>
             <SharingSectionItem>
-            <LocationIcon height="18">
+              <LocationIcon height="18">
                 <use href={`${icons}#icon-Star`}></use>
               </LocationIcon>
               <SalaryTitle>Save to my list</SalaryTitle>
             </SharingSectionItem>
             <SharingSectionItem>
-            <LocationIcon height="18">
+              <LocationIcon height="18">
                 <use href={`${icons}#icon-ShapeIcon`}></use>
               </LocationIcon>
               <SalaryTitle>Share</SalaryTitle>
             </SharingSectionItem>
           </SharingSection>
           <DescriptionSection>
-            <JobTitle>{data[0].title}</JobTitle>
+            <JobTitle>{data[jobIndex].title}</JobTitle>
             <SalaryInfoSection>
               <Posted>
-                {`Posted ${moment(data[0].createdAt).startOf('day').fromNow()}`}
+                {`Posted ${moment(data[jobIndex].createdAt)
+                  .startOf('day')
+                  .fromNow()}`}
               </Posted>
               <Salary>
                 <SalaryTitle>Brutto, per year</SalaryTitle>
-                <SalaryPerYear>€ {data[0].salary}</SalaryPerYear>
+                <SalaryPerYear>€ {data[jobIndex].salary}</SalaryPerYear>
               </Salary>
             </SalaryInfoSection>
-            <Description>{data[0].description}</Description>
+            <Description>{data[jobIndex].description}</Description>
             <ApplyButtonSection>
               <ApplyButton type="button">Apply now</ApplyButton>
             </ApplyButtonSection>
@@ -88,7 +78,7 @@ const DetailedJob = () => {
           <InfoSection>
             <Subtitle>Attached images</Subtitle>
             <PicturesList>
-              {data[0].pictures.map(image => (
+              {data[jobIndex].pictures.map(image => (
                 <PicturesListItem key={nanoid()}>
                   <Pictures src={image} alt="" />
                 </PicturesListItem>
@@ -99,13 +89,13 @@ const DetailedJob = () => {
             <Subtitle>Additional info</Subtitle>
             <AdditionalInfoSubTitle>Employment type</AdditionalInfoSubTitle>
             <BenefitsList>
-              {data[0].employment_type.map(employment => (
+              {data[jobIndex].employment_type.map(employment => (
                 <EmploymentText key={employment}>{employment}</EmploymentText>
               ))}
             </BenefitsList>
             <AdditionalInfoSubTitle>Benefits</AdditionalInfoSubTitle>
             <BenefitsList>
-              {data[0].benefits.map(benefit => (
+              {data[jobIndex].benefits.map(benefit => (
                 <BenefitsText key={benefit}>{benefit}</BenefitsText>
               ))}
             </BenefitsList>
@@ -113,15 +103,15 @@ const DetailedJob = () => {
 
           <Subtitle>Contacts</Subtitle>
           <ContactSection>
-            <ContactsTitle>{data[0].name}</ContactsTitle>
+            <ContactsTitle>{data[jobIndex].name}</ContactsTitle>
             <LocationSection>
-            <LocationIcon height="18">
+              <LocationIcon height="18">
                 <use href={`${icons}#icon-Location`}></use>
               </LocationIcon>
-              <ContactsText>{data[0].address} </ContactsText>
+              <ContactsText>{data[jobIndex].address} </ContactsText>
             </LocationSection>
-            <ContactsText>{data[0].phone}</ContactsText>
-            <ContactsText>{data[0].email}</ContactsText>
+            <ContactsText>{data[jobIndex].phone}</ContactsText>
+            <ContactsText>{data[jobIndex].email}</ContactsText>
             <p>map</p>
           </ContactSection>
         </Wrapper>

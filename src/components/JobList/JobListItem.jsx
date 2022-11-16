@@ -10,17 +10,19 @@ import {
   Stars,
   ContentSection,
   BookmarkImage,
+  BookmarkSection,
+  JobInfoSection,
 } from './JobListItem.styled';
 import { useMediaQuery } from 'react-responsive';
 import icons from '../../images/icons.svg';
 import moment from 'moment';
 
 const JobListItem = ({ data }) => {
-  const { createdAt, description, name, address, pictures } = data;
+  const { createdAt, title, name, address, pictures } = data;
   const isWideScreen = useMediaQuery({ query: '(min-width: 968px)' });
 
   return (
-    <li>
+    <li >
       <JobListItemSection>
         <div>
           <Image src={pictures[0]} alt="" />
@@ -37,8 +39,8 @@ const JobListItem = ({ data }) => {
                 .fromNow()}`}</PostedText>
             </PublicationInfo>
           )}
-          <div>
-            <Job>{description}</Job>
+          <JobInfoSection>
+            <Job to={`/${data.id}`}>{title}</Job>
             <LocationText>{name}</LocationText>
             <LocationSection>
               <LocationIcon height="18">
@@ -46,21 +48,21 @@ const JobListItem = ({ data }) => {
               </LocationIcon>
               <LocationText>{address}</LocationText>
             </LocationSection>
-          </div>
+          </JobInfoSection>
 
           {isWideScreen && (
             <PublicationInfo>
               <Stars>
                 <use href={`${icons}#icon-Rating`}></use>
               </Stars>
-              <div>
+              <BookmarkSection>
                 <BookmarkImage height="18">
                   <use href={`${icons}#icon-Bookmark`}></use>
                 </BookmarkImage>
                 <PostedText>{`Posted ${moment(createdAt)
                   .startOf('day')
                   .fromNow()}`}</PostedText>
-              </div>
+              </BookmarkSection>
             </PublicationInfo>
           )}
         </ContentSection>

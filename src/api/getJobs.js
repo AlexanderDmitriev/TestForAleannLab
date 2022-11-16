@@ -11,3 +11,4 @@ export const getData = async () => {
       console.error('Sorry, We don`t have data');
     }
   };
+

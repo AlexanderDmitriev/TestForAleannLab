@@ -1,25 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import JobListItem from './JobListItem';
 import { JobListSection } from './JobList.styled';
-import { getData } from '../../api/getJobs';
 
-const JobList = () => {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    getData().then(response => {
-      setLoading(true);
-      if (response) {
-        console.log(response.data);
-        setData(response.data);
-        setLoading(false);
-      } else {
-        return;
-      }
-    });
-  }, []);
-
+const JobList = ({ data, loading }) => {
   return (
     <>
       {loading && <div>Loading...</div>}
