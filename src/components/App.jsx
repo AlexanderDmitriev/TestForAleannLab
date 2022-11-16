@@ -1,4 +1,5 @@
 import JobList from './JobList';
+import DetailedJob from './DetailedJob/DetaliedJob';
 import { Container, Wrapper } from './Container';
 
 export const App = () => {
@@ -6,6 +7,7 @@ export const App = () => {
     <Wrapper>
       <Container>
         <JobList />
+        <DetailedJob/>
       </Container>
     </Wrapper>
   );
