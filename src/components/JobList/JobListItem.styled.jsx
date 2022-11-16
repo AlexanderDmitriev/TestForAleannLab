@@ -102,18 +102,22 @@ export const Job = styled.p`
   }
 `;
 
-export const LocationIcon = styled.img`
+export const LocationIcon = styled.svg`
   padding-right: 8px;
+  width: 13px;
+  
 `;
 
-export const Stars = styled.img`
+export const Stars = styled.svg`
   height: 10px;
+  width: 54px;
   @media screen and (min-width: 968px) {
     padding-left: 5px;
     padding-right: 5px;
   }
   @media screen and (min-width: 1920px) {
     height: 18px;
+    width: 96px;
   }
 `;
 

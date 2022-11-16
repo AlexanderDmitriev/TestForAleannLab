@@ -11,8 +11,6 @@ import {
   ContentSection,
   BookmarkImage,
 } from './JobListItem.styled';
-import starsPng from '../../images/Rating.png';
-import locationIconPng from '../../images/Location.png';
 import { useMediaQuery } from 'react-responsive';
 import icons from '../../images/icons.svg';
 import moment from 'moment';
@@ -31,7 +29,9 @@ const JobListItem = ({ data }) => {
         <ContentSection>
           {!isWideScreen && (
             <PublicationInfo>
-              <Stars src={starsPng} alt="" />
+              <Stars>
+                <use href={`${icons}#icon-Rating`}></use>
+              </Stars>
               <PostedText>{`Posted ${moment(createdAt)
                 .startOf('day')
                 .fromNow()}`}</PostedText>
@@ -41,14 +41,18 @@ const JobListItem = ({ data }) => {
             <Job>{description}</Job>
             <LocationText>{name}</LocationText>
             <LocationSection>
-              <LocationIcon src={locationIconPng} alt="" height="18" />
+              <LocationIcon height="18">
+                <use href={`${icons}#icon-Location`}></use>
+              </LocationIcon>
               <LocationText>{address}</LocationText>
             </LocationSection>
           </div>
 
           {isWideScreen && (
             <PublicationInfo>
-              <Stars src={starsPng} alt="" />
+              <Stars>
+                <use href={`${icons}#icon-Rating`}></use>
+              </Stars>
               <div>
                 <BookmarkImage height="18">
                   <use href={`${icons}#icon-Bookmark`}></use>

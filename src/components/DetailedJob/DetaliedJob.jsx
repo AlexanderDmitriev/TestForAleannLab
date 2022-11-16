@@ -29,9 +29,7 @@ import {
 } from './DetailedJob.styled';
 import { LocationIcon, LocationSection } from '../JobList/JobListItem.styled';
 import moment from 'moment';
-import locationIconPng from '../../images/Location.png';
-import shapeIconPng from '../../images/ShapeIcon.png';
-import starIconPng from '../../images/Star.png';
+import icons from '../../images/icons.svg';
 import { nanoid } from 'nanoid';
 
 const DetailedJob = () => {
@@ -58,11 +56,15 @@ const DetailedJob = () => {
           <Subtitle>Job details</Subtitle>
           <SharingSection>
             <SharingSectionItem>
-              <LocationIcon src={starIconPng} alt="" height="18" />
+            <LocationIcon height="18">
+                <use href={`${icons}#icon-Star`}></use>
+              </LocationIcon>
               <SalaryTitle>Save to my list</SalaryTitle>
             </SharingSectionItem>
             <SharingSectionItem>
-              <LocationIcon src={shapeIconPng} alt="" height="18" />
+            <LocationIcon height="18">
+                <use href={`${icons}#icon-ShapeIcon`}></use>
+              </LocationIcon>
               <SalaryTitle>Share</SalaryTitle>
             </SharingSectionItem>
           </SharingSection>
@@ -113,7 +115,9 @@ const DetailedJob = () => {
           <ContactSection>
             <ContactsTitle>{data[0].name}</ContactsTitle>
             <LocationSection>
-              <LocationIcon src={locationIconPng} alt="" height="18" />
+            <LocationIcon height="18">
+                <use href={`${icons}#icon-Location`}></use>
+              </LocationIcon>
               <ContactsText>{data[0].address} </ContactsText>
             </LocationSection>
             <ContactsText>{data[0].phone}</ContactsText>
