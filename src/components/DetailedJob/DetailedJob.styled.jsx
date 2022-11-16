@@ -1,8 +1,9 @@
 import styled from 'styled-components';
+import {theme} from '../theme';
 
 export const Wrapper = styled.section`
   padding: 24px 15px;
-  background-color: #e6e9f2;
+  background-color: ${theme.colors.cardBackground};
 `;
 
 export const DescriptionSection = styled.div`
@@ -17,7 +18,7 @@ export const JobTitle = styled.h2`
   line-height: 30px;
   /* or 125% */
   letter-spacing: -0.75px;
-  color: #3a4562;
+  color: ${theme.colors.mainTextColor};
 `;
 
 export const SharingSection = styled.div`
@@ -70,7 +71,7 @@ export const SalaryPerYear = styled.p`
   line-height: 25px;
   /* identical to box height, or 125% */
   letter-spacing: -0.625px;
-  color: #3a4562;
+  color: ${theme.colors.mainTextColor};
 `;
 
 export const AdditionalInfoSubTitle = styled.p`
@@ -161,13 +162,13 @@ export const Subtitle = styled.h2`
   font-size: 28px;
   line-height: 34px;
   letter-spacing: 0.413333px;
-  color: #3a4562;
+  color: ${theme.colors.mainTextColor};
   padding-bottom: 22px;
   ::after {
     content: '';
     display: block;
     height: 1px;
-    background: #3a4562;
+    background: ${theme.colors.mainTextColor};
     opacity: 0.13;
     margin-top: 10px;
   }

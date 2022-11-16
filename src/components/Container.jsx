@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {theme} from './theme';
 
 export const Container = styled.div`
   padding: 9px;
@@ -16,6 +17,6 @@ export const Container = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  background-color: #e6e9f2;
+  background-color: ${theme.colors.cardBackground};
   height: 100%;
 `;

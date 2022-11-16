@@ -1,13 +1,14 @@
 import styled from 'styled-components';
+import {theme} from '../theme';
 
 export const JobListItemSection = styled.div`
   display: flex;
   min-height: 206px;
   width: 396px;
-  background-color: #fff;
-  border: 1px solid #878d9d;
+  background-color: ${theme.colors.lightBackground};
+  border: 1px solid ${theme.colors.secondaryColor};
   border-radius: 5px;
-  box-shadow: 1px 1px 0px 0px #878d9d;
+  box-shadow: 1px 1px 0px 0px ${theme.colors.secondaryColor};
   @media screen and (min-width: 968px) {
     min-height: 164px;
     width: 768px;
@@ -43,7 +44,7 @@ export const LocationText = styled.p`
   font-size: 16px;
   line-height: 25px; /* or 156% */
   letter-spacing: 0.23619px;
-  color: #878d9d;
+  color: ${theme.colors.secondaryColor};
   margin: 0;
   padding-bottom: 7px;
   padding-right: 10px;
@@ -69,7 +70,7 @@ export const PostedText = styled.p`
   line-height: 17px;
   text-align: right;
   letter-spacing: 0.206667px;
-  color: #878d9d;
+  color: ${theme.colors.secondaryColor};
   margin: 0;
   @media screen and (min-width: 1920px) {
     font-size: 16px;
@@ -84,7 +85,7 @@ export const Job = styled.p`
   line-height: 24px;
   /* or 133% */
   letter-spacing: -0.5625px;
-  color: #3a4562;
+  color: ${theme.colors.mainTextColor};
   margin: 0;
   padding-bottom: 5px;
   width: 278px;
