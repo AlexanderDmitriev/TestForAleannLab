@@ -19,18 +19,17 @@ import {
   Pictures,
   PicturesListItem,
   PicturesList,
-  AdditionalInfoSubTitle,
-  EmploymentText,
-  BenefitsText,
-  BenefitsList,
   ContactSection,
   ContactsText,
   ContactsTitle,
 } from './DetailedJob.styled';
 import { LocationIcon, LocationSection } from '../JobList/JobListItem.styled';
+import AdditionalInfo from './AdditionalInfo';
 import moment from 'moment';
 import icons from '../../images/icons.svg';
 import { nanoid } from 'nanoid';
+import LocationMap from './LocationMap';
+
 
 const DetailedJob = ({ data, loading }) => {
   const { jobId } = useParams();
@@ -39,7 +38,7 @@ const DetailedJob = ({ data, loading }) => {
   return (
     <>
       {loading && <div>Loading...</div>}
-      {data && (
+      {data.length > 0 && (
         <Wrapper>
           <Subtitle>Job details</Subtitle>
           <SharingSection>
@@ -85,22 +84,7 @@ const DetailedJob = ({ data, loading }) => {
               ))}
             </PicturesList>
           </InfoSection>
-          <InfoSection>
-            <Subtitle>Additional info</Subtitle>
-            <AdditionalInfoSubTitle>Employment type</AdditionalInfoSubTitle>
-            <BenefitsList>
-              {data[jobIndex].employment_type.map(employment => (
-                <EmploymentText key={employment}>{employment}</EmploymentText>
-              ))}
-            </BenefitsList>
-            <AdditionalInfoSubTitle>Benefits</AdditionalInfoSubTitle>
-            <BenefitsList>
-              {data[jobIndex].benefits.map(benefit => (
-                <BenefitsText key={benefit}>{benefit}</BenefitsText>
-              ))}
-            </BenefitsList>
-          </InfoSection>
-
+          <AdditionalInfo data={data[jobIndex]} />
           <Subtitle>Contacts</Subtitle>
           <ContactSection>
             <ContactsTitle>{data[jobIndex].name}</ContactsTitle>
@@ -113,6 +97,7 @@ const DetailedJob = ({ data, loading }) => {
             <ContactsText>{data[jobIndex].phone}</ContactsText>
             <ContactsText>{data[jobIndex].email}</ContactsText>
             <p>map</p>
+            <LocationMap/>
           </ContactSection>
         </Wrapper>
       )}

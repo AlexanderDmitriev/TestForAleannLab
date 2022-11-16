@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { theme } from '../theme';
-import { NavLink } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 
 export const JobListItemSection = styled.div`
   display: flex;
@@ -16,6 +16,37 @@ export const JobListItemSection = styled.div`
   }
   @media screen and (min-width: 1920px) {
     width: 1400px;
+  }
+`;
+export const PublicationInfo = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding-right: 16px;
+  padding-top: 17px;
+  padding-bottom: 17px;
+  align-items: center;
+`;
+
+export const LocationSection = styled.div`
+  display: flex;
+`;
+export const BookmarkSection = styled.div`
+  text-align: right;
+`;
+
+export const ContentSection = styled.div`
+  display: block;
+  @media screen and (min-width: 968px) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 0;
+  }
+`;
+
+export const JobInfoSection = styled.div`
+  @media screen and (min-width: 968px) {
+    min-width: 468px;
   }
 `;
 
@@ -34,19 +65,18 @@ export const Image = styled.img`
   }
 `;
 
-export const LocationSection = styled.div`
-  display: flex;
-`;
-
-export const LocationText = styled.p`
+const Text = styled.p`
   font-family: 'Proxima Nova';
   font-style: normal;
+  color: ${theme.colors.secondaryColor};
+  margin: 0;
+`;
+
+export const LocationText = styled(Text)`
   font-weight: 400;
   font-size: 16px;
   line-height: 25px; /* or 156% */
   letter-spacing: 0.23619px;
-  color: ${theme.colors.secondaryColor};
-  margin: 0;
   padding-bottom: 7px;
   padding-right: 10px;
   @media screen and (min-width: 968px) {
@@ -54,34 +84,19 @@ export const LocationText = styled.p`
   }
 `;
 
-export const PublicationInfo = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding-right: 16px;
-  padding-top: 17px;
-  padding-bottom: 17px;
-  align-items: center;
-`;
-
-export const PostedText = styled.p`
-  font-family: 'Proxima Nova';
-  font-style: normal;
+export const PostedText = styled(Text)`
   font-weight: 300;
   font-size: 14px;
   line-height: 17px;
   text-align: right;
   letter-spacing: 0.206667px;
-  color: ${theme.colors.secondaryColor};
-  margin: 0;
   @media screen and (min-width: 1920px) {
     font-size: 16px;
   }
 `;
 
 export const Job = styled(NavLink)`
-text-decoration: none;
-  font-family: 'Proxima Nova';
-  font-style: normal;
+  text-decoration: none;
   font-weight: 400;
   font-size: 18px;
   line-height: 24px;
@@ -135,25 +150,4 @@ export const BookmarkImage = styled.svg`
   @media screen and (min-width: 968px) {
     margin-left: 85px;
   }
-`;
-
-export const BookmarkSection = styled.div`
-  text-align: right;
-`;
-
-export const ContentSection = styled.div`
-  display: block;
-  @media screen and (min-width: 968px) {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 24px 0;
-  }
-`;
-
-export const JobInfoSection = styled.div`
-@media screen and (min-width: 968px) {
-  min-width: 468px;
-  }
-  
 `;
