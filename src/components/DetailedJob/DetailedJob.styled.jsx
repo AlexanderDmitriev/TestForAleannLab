@@ -1,13 +1,16 @@
 import styled from 'styled-components';
-import {theme} from '../theme';
+import { theme } from '../theme';
 
 export const Wrapper = styled.section`
   padding: 24px 15px;
   background-color: ${theme.colors.lightBackground};
+  @media screen and (min-width: 968px) {
+    padding: 56px 19px;
+  }
 `;
 
 export const DescriptionSection = styled.div`
-padding-bottom: 135px;
+  padding-bottom: 135px;
 `;
 
 export const JobTitle = styled.h2`
@@ -19,6 +22,11 @@ export const JobTitle = styled.h2`
   /* or 125% */
   letter-spacing: -0.75px;
   color: ${theme.colors.mainTextColor};
+  @media screen and (min-width: 968px) {
+    font-size: 28px;
+    line-height: 34px;
+    letter-spacing: 0.413333px;
+  }
 `;
 
 export const SharingSection = styled.div`
@@ -50,6 +58,15 @@ export const Posted = styled.p`
   /* identical to box height, or 192% */
   letter-spacing: 0.191905px;
   color: rgba(56, 65, 93, 0.602109);
+  @media screen and (min-width: 968px) {
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    /* or 133% */
+    letter-spacing: -0.5625px;
+    color: rgba(56, 65, 93, 0.355988);
+  }
 `;
 
 export const SalaryTitle = styled.p`
@@ -61,6 +78,9 @@ export const SalaryTitle = styled.p`
   /* identical to box height, or 133% */
   letter-spacing: -0.5625px;
   color: rgba(56, 65, 93, 0.82);
+  @media screen and (min-width: 968px) {
+    font-family: 'Roboto';
+  }
 `;
 
 export const SalaryPerYear = styled.p`
@@ -84,6 +104,9 @@ export const AdditionalInfoSubTitle = styled.p`
   letter-spacing: -0.5625px;
   color: rgba(56, 65, 93, 0.82);
   padding-bottom: 10px;
+  @media screen and (min-width: 968px) {
+    font-family: 'Roboto';
+  }
 `;
 
 export const BenefitsText = styled.li`
@@ -136,7 +159,7 @@ export const ApplyButton = styled.button`
 `;
 
 export const ApplyButtonSection = styled.div`
-text-align: center;
+  text-align: center;
 `;
 
 export const Description = styled.p`
@@ -194,10 +217,10 @@ export const PicturesList = styled.ul`
 `;
 
 export const ContactSection = styled.div`
-background-color: #2A3047;
-border-radius: 8px;
-padding: 31px 62px;
-padding-bottom: 0;
+  background-color: #2a3047;
+  border-radius: 8px;
+  padding: 31px 62px;
+  padding-bottom: 0;
 `;
 
 export const ContactsText = styled.p`

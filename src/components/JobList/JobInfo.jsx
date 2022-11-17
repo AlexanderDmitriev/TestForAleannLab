@@ -1,22 +1,18 @@
 import {
-  Job,
-  LocationText,
-  LocationSection,
   PublicationInfo,
   PostedText,
-  LocationIcon,
   Stars,
   ContentSection,
   BookmarkImage,
   BookmarkSection,
-  JobInfoSection,
 } from './JobListItem.styled';
+import JobInfoLocation from './JobInfoLocation';
 import icons from '../../images/icons.svg';
 import moment from 'moment';
 import { useMediaQuery } from 'react-responsive';
 
 const JobInfo = ({ data }) => {
-  const { createdAt, title, name, address } = data;
+  const { createdAt } = data;
   const isWideScreen = useMediaQuery({ query: '(min-width: 968px)' });
   return (
     <ContentSection>
@@ -30,17 +26,7 @@ const JobInfo = ({ data }) => {
             .fromNow()}`}</PostedText>
         </PublicationInfo>
       )}
-      <JobInfoSection>
-        <Job to={`/${data.id}`}>{title}</Job>
-        <LocationText>{name}</LocationText>
-        <LocationSection>
-          <LocationIcon height="18">
-            <use href={`${icons}#icon-Location`}></use>
-          </LocationIcon>
-          <LocationText>{address}</LocationText>
-        </LocationSection>
-      </JobInfoSection>
-
+      <JobInfoLocation data={data} />
       {isWideScreen && (
         <PublicationInfo>
           <Stars>

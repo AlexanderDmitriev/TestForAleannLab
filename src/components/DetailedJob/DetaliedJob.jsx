@@ -4,8 +4,6 @@ import {
   Wrapper,
   DescriptionSection,
   JobTitle,
-  SharingSection,
-  SharingSectionItem,
   SalaryInfoSection,
   Posted,
   Salary,
@@ -25,6 +23,7 @@ import {
 } from './DetailedJob.styled';
 import { LocationIcon, LocationSection } from '../JobList/JobListItem.styled';
 import AdditionalInfo from './AdditionalInfo';
+import Sharing from './Sharing';
 import moment from 'moment';
 import icons from '../../images/icons.svg';
 import { nanoid } from 'nanoid';
@@ -46,20 +45,7 @@ const DetailedJob = ({ data, loading }) => {
       {data.length > 0 && (
         <Wrapper>
           <Subtitle>Job details</Subtitle>
-          <SharingSection>
-            <SharingSectionItem>
-              <LocationIcon height="18">
-                <use href={`${icons}#icon-Star`}></use>
-              </LocationIcon>
-              <SalaryTitle>Save to my list</SalaryTitle>
-            </SharingSectionItem>
-            <SharingSectionItem>
-              <LocationIcon height="18">
-                <use href={`${icons}#icon-ShapeIcon`}></use>
-              </LocationIcon>
-              <SalaryTitle>Share</SalaryTitle>
-            </SharingSectionItem>
-          </SharingSection>
+          <Sharing />
           <DescriptionSection>
             <JobTitle>{data[jobIndex].title}</JobTitle>
             <SalaryInfoSection>
@@ -78,7 +64,6 @@ const DetailedJob = ({ data, loading }) => {
               <ApplyButton type="button">Apply now</ApplyButton>
             </ApplyButtonSection>
           </DescriptionSection>
-
           <InfoSection>
             <Subtitle>Attached images</Subtitle>
             <PicturesList>
@@ -102,7 +87,12 @@ const DetailedJob = ({ data, loading }) => {
             <ContactsText>{data[jobIndex].phone}</ContactsText>
             <ContactsText>{data[jobIndex].email}</ContactsText>
             {isLoaded ? (
-              <LocationMap center={{ lat: data[jobIndex].location.lat, lng: data[jobIndex].location.long }} />
+              <LocationMap
+                center={{
+                  lat: data[jobIndex].location.lat,
+                  lng: data[jobIndex].location.long,
+                }}
+              />
             ) : (
               <div>Loading map...</div>
             )}
