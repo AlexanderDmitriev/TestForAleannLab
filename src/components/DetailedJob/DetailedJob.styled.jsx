@@ -9,6 +9,15 @@ export const Wrapper = styled.section`
   }
 `;
 
+export const JobDetailsSection = styled.div`
+  @media screen and (min-width: 968px) {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(58, 69, 98, 0.13);
+    margin-bottom: 31px;
+  }
+`;
+
 export const DescriptionSection = styled.div`
   padding-bottom: 135px;
 `;
@@ -26,6 +35,7 @@ export const JobTitle = styled.h2`
     font-size: 28px;
     line-height: 34px;
     letter-spacing: 0.413333px;
+    width: 600px;
   }
 `;
 
@@ -36,7 +46,10 @@ export const SharingSection = styled.div`
 
 export const SharingSectionItem = styled.div`
   display: flex;
-  margin-right: 10px;
+  padding-right: 10px;
+  @media screen and (min-width: 968px) {
+    padding-right: 24px;
+  }
 `;
 
 export const SalaryInfoSection = styled.div`
@@ -92,6 +105,12 @@ export const SalaryPerYear = styled.p`
   /* identical to box height, or 125% */
   letter-spacing: -0.625px;
   color: ${theme.colors.mainTextColor};
+`;
+
+export const SalarySectionMobile = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 7px;
 `;
 
 export const AdditionalInfoSubTitle = styled.p`
@@ -156,6 +175,14 @@ export const ApplyButton = styled.button`
   text-align: center;
   text-transform: uppercase;
   color: #ffffff;
+  cursor: pointer;
+  &:hover,
+  &:focus {
+    background-color: #3f4d6e;
+  }
+  @media screen and (min-width: 968px) {
+    margin-bottom: 32px;
+  }
 `;
 
 export const ApplyButtonSection = styled.div`
@@ -188,6 +215,9 @@ export const Subtitle = styled.h2`
   color: ${theme.colors.mainTextColor};
   padding-bottom: 22px;
   ::after {
+    @media screen and (min-width: 968px) {
+      display: none;
+    }
     content: '';
     display: block;
     height: 1px;

@@ -12,6 +12,20 @@ const LocationMap = ({ center }) => {
     width: '363px',
     height: '363px',
   };
+
+  const defaultOptions = {
+    panControl:true,
+    zoomControl:true,
+    mapTypeControl:false,
+    scaleControl:false,
+    streetViewControl:false,
+    rotateControl:false,
+    clickableIcons:false,
+    keyboardShortcuts:false,
+    scrollweel:false,
+    disableDoubleClickZoom:true,
+    fullScreenControl: false,
+  };
   const mapRef = useRef(undefined);
 
   const onLoad = useCallback(function callback(map) {
@@ -30,6 +44,7 @@ const LocationMap = ({ center }) => {
         zoom={10}
         onLoad={onLoad}
         onUnmount={onUnmount}
+        options={defaultOptions}
       >
         {/* Child components, such as markers, info windows, etc. */}
         <></>
