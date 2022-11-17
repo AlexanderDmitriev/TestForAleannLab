@@ -29,11 +29,16 @@ import moment from 'moment';
 import icons from '../../images/icons.svg';
 import { nanoid } from 'nanoid';
 import LocationMap from './LocationMap';
-
+import { useJsApiLoader } from '@react-google-maps/api';
 
 const DetailedJob = ({ data, loading }) => {
   const { jobId } = useParams();
   const jobIndex = data.findIndex(job => job.id === jobId);
+  const API_KEY = process.env.GOOGLE_MAPS_KEY;
+  const { isLoaded } = useJsApiLoader({
+    id: 'google-map-script',
+    googleMapsApiKey: API_KEY,
+  });
 
   return (
     <>
@@ -96,8 +101,11 @@ const DetailedJob = ({ data, loading }) => {
             </LocationSection>
             <ContactsText>{data[jobIndex].phone}</ContactsText>
             <ContactsText>{data[jobIndex].email}</ContactsText>
-            <p>map</p>
-            <LocationMap/>
+            {isLoaded ? (
+              <LocationMap center={{ lat: data[jobIndex].location.lat, lng: data[jobIndex].location.long }} />
+            ) : (
+              <div>Loading map...</div>
+            )}
           </ContactSection>
         </Wrapper>
       )}

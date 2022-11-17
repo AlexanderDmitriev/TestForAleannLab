@@ -3,7 +3,7 @@ import {theme} from '../theme';
 
 export const Wrapper = styled.section`
   padding: 24px 15px;
-  background-color: ${theme.colors.cardBackground};
+  background-color: ${theme.colors.lightBackground};
 `;
 
 export const DescriptionSection = styled.div`
@@ -197,6 +197,7 @@ export const ContactSection = styled.div`
 background-color: #2A3047;
 border-radius: 8px;
 padding: 31px 62px;
+padding-bottom: 0;
 `;
 
 export const ContactsText = styled.p`

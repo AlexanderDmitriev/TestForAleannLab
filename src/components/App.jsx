@@ -15,6 +15,7 @@ export const App = () => {
       setLoading(true);
       if (response) {
         setData(response.data);
+        console.log(response.data);
         setLoading(false);
       } else {
         return;
