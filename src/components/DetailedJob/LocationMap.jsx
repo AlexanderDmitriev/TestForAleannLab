@@ -1,4 +1,5 @@
 import { GoogleMap } from '@react-google-maps/api';
+import { themeMaps } from './ThemeMaps';
 import React, { useRef, useCallback } from 'react';
 import styled from 'styled-components';
 
@@ -25,6 +26,7 @@ const LocationMap = ({ center }) => {
     scrollweel:false,
     disableDoubleClickZoom:true,
     fullScreenControl: false,
+    styles: themeMaps,
   };
   const mapRef = useRef(undefined);
 

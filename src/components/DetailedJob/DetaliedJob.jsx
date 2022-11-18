@@ -63,12 +63,12 @@ const DetailedJob = ({ data, loading }) => {
                 </Salary>
               </SalarySectionMobile>
               <Posted>
-                  {`Posted ${moment(data[jobIndex].createdAt)
-                    .startOf('day')
-                    .fromNow()}`}
-                </Posted>
-                <Description>{data[jobIndex].description}</Description>
-                <ApplyButton type="button">Apply now</ApplyButton>
+                {`Posted ${moment(data[jobIndex].createdAt)
+                  .startOf('day')
+                  .fromNow()}`}
+              </Posted>
+              <Description>{data[jobIndex].description}</Description>
+              <ApplyButton type="button">Apply now</ApplyButton>
             </>
           )}
           {!isWideScreen && (
@@ -93,19 +93,37 @@ const DetailedJob = ({ data, loading }) => {
               )}
             </DescriptionSection>
           )}
-
-          <InfoSection>
-            <Subtitle>Attached images</Subtitle>
-            <PicturesList>
-              {data[jobIndex].pictures.map(image => (
-                <PicturesListItem key={nanoid()}>
-                  <Pictures src={image} alt="" />
-                </PicturesListItem>
-              ))}
-            </PicturesList>
-          </InfoSection>
-          <AdditionalInfo data={data[jobIndex]} />
-          <Subtitle>Contacts</Subtitle>
+          {!isWideScreen && (
+            <>
+              <InfoSection>
+                <Subtitle>Attached images</Subtitle>
+                <PicturesList>
+                  {data[jobIndex].pictures.map(image => (
+                    <PicturesListItem key={nanoid()}>
+                      <Pictures src={image} alt="" />
+                    </PicturesListItem>
+                  ))}
+                </PicturesList>
+              </InfoSection>
+              <AdditionalInfo data={data[jobIndex]} />
+              <Subtitle>Contacts</Subtitle>
+            </>
+          )}
+          {isWideScreen && (
+            <>
+              <AdditionalInfo data={data[jobIndex]} />
+              <InfoSection>
+                <Subtitle>Attached images</Subtitle>
+                <PicturesList>
+                  {data[jobIndex].pictures.map(image => (
+                    <PicturesListItem key={nanoid()}>
+                      <Pictures src={image} alt="" />
+                    </PicturesListItem>
+                  ))}
+                </PicturesList>
+              </InfoSection>
+            </>
+          )}
           <ContactSection>
             <ContactsTitle>{data[jobIndex].name}</ContactsTitle>
             <LocationSection>
