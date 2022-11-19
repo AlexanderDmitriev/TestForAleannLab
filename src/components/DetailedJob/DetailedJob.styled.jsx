@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { theme } from '../theme';
+import { NavLink } from 'react-router-dom';
 
 export const Wrapper = styled.section`
   padding: 24px 15px;
@@ -214,6 +215,7 @@ export const Subtitle = styled.h2`
   letter-spacing: 0.413333px;
   color: ${theme.colors.mainTextColor};
   padding-bottom: 22px;
+
   ::after {
     @media screen and (min-width: 968px) {
       display: none;
@@ -273,4 +275,35 @@ export const ContactsTitle = styled.p`
   letter-spacing: 0.23619px;
   color: #e7eaf0;
   padding-bottom: 17px;
+`;
+
+export const BackButtonSection = styled.div`
+  padding-bottom: 22px;
+`;
+
+export const BackButton = styled(NavLink)`
+  text-decoration: none;
+  font-family: 'Proxima Nova';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+  /* identical to box height, or 133% */
+  text-align: center;
+  text-transform: uppercase;
+  color: #3a4562;
+  padding: 18px 26px;
+  background-color: rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border: none;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  cursor: pointer;
+  transition-property: background-color;
+  transition-duration: 300ms;
+  transition-timing-function: linear;
+  &:hover,
+  &:focus {
+    color: rgba(0, 0, 0, 0.35);
+  }
 `;

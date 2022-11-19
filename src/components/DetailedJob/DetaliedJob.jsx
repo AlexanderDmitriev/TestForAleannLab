@@ -22,6 +22,8 @@ import {
   ContactsText,
   ContactsTitle,
   SalarySectionMobile,
+  BackButton,
+  BackButtonSection,
 } from './DetailedJob.styled';
 import { LocationIcon, LocationSection } from '../JobList/JobListItem.styled';
 import AdditionalInfo from './AdditionalInfo';
@@ -29,7 +31,7 @@ import Sharing from './Sharing';
 import moment from 'moment';
 import icons from '../../images/icons.svg';
 import { nanoid } from 'nanoid';
-import LocationMap from './LocationMap';
+import LocationMap from './Maps/LocationMap';
 import { useJsApiLoader } from '@react-google-maps/api';
 import { useMediaQuery } from 'react-responsive';
 
@@ -48,53 +50,91 @@ const DetailedJob = ({ data, loading }) => {
       {loading && <div>Loading...</div>}
       {data.length > 0 && (
         <Wrapper>
-          <JobDetailsSection>
-            <Subtitle>Job details</Subtitle>
-            <Sharing />
-          </JobDetailsSection>
           {isWideScreen && (
             <>
-              <ApplyButton type="button">Apply now</ApplyButton>
-              <SalarySectionMobile>
-                <JobTitle>{data[jobIndex].title}</JobTitle>
-                <Salary>
-                  <SalaryPerYear>€ {data[jobIndex].salary}</SalaryPerYear>
-                  <SalaryTitle>Brutto, per year</SalaryTitle>
-                </Salary>
-              </SalarySectionMobile>
-              <Posted>
-                {`Posted ${moment(data[jobIndex].createdAt)
-                  .startOf('day')
-                  .fromNow()}`}
-              </Posted>
-              <Description>{data[jobIndex].description}</Description>
-              <ApplyButton type="button">Apply now</ApplyButton>
-            </>
-          )}
-          {!isWideScreen && (
-            <DescriptionSection>
-              <JobTitle>{data[jobIndex].title}</JobTitle>
-              <SalaryInfoSection>
+              <div>
+                <JobDetailsSection>
+                  <Subtitle>Job details</Subtitle>
+                  <Sharing />
+                </JobDetailsSection>
+                <ApplyButton type="button">Apply now</ApplyButton>
+                <SalarySectionMobile>
+                  <JobTitle>{data[jobIndex].title}</JobTitle>
+                  <Salary>
+                    <SalaryPerYear>€ {data[jobIndex].salary}</SalaryPerYear>
+                    <SalaryTitle>Brutto, per year</SalaryTitle>
+                  </Salary>
+                </SalarySectionMobile>
                 <Posted>
                   {`Posted ${moment(data[jobIndex].createdAt)
                     .startOf('day')
                     .fromNow()}`}
                 </Posted>
-                <Salary>
-                  <SalaryTitle>Brutto, per year</SalaryTitle>
-                  <SalaryPerYear>€ {data[jobIndex].salary}</SalaryPerYear>
-                </Salary>
-              </SalaryInfoSection>
-              <Description>{data[jobIndex].description}</Description>
-              {!isWideScreen && (
+                <Description>{data[jobIndex].description}</Description>
+                <ApplyButton type="button">Apply now</ApplyButton>
+                <AdditionalInfo data={data[jobIndex]} />
+                <InfoSection>
+                  <Subtitle>Attached images</Subtitle>
+                  <PicturesList>
+                    {data[jobIndex].pictures.map(image => (
+                      <PicturesListItem key={nanoid()}>
+                        <Pictures src={image} alt="" />
+                      </PicturesListItem>
+                    ))}
+                  </PicturesList>
+                </InfoSection>
+              </div>
+              <BackButtonSection>
+                <BackButton to="/">RETURN TO JOB BOARD</BackButton>
+              </BackButtonSection>
+              <ContactSection>
+                <ContactsTitle>{data[jobIndex].name}</ContactsTitle>
+                <LocationSection>
+                  <LocationIcon height="18">
+                    <use href={`${icons}#icon-Location`}></use>
+                  </LocationIcon>
+                  <ContactsText>{data[jobIndex].address} </ContactsText>
+                </LocationSection>
+                <ContactsText>{data[jobIndex].phone}</ContactsText>
+                <ContactsText>{data[jobIndex].email}</ContactsText>
+                {isLoaded ? (
+                  <LocationMap
+                    center={{
+                      lat: data[jobIndex].location.lat,
+                      lng: data[jobIndex].location.long,
+                    }}
+                  />
+                ) : (
+                  <div>Loading map...</div>
+                )}
+              </ContactSection>
+            </>
+          )}
+
+          {!isWideScreen && (
+            <>
+              <JobDetailsSection>
+                <Subtitle>Job details</Subtitle>
+                <Sharing />
+              </JobDetailsSection>
+              <DescriptionSection>
+                <JobTitle>{data[jobIndex].title}</JobTitle>
+                <SalaryInfoSection>
+                  <Posted>
+                    {`Posted ${moment(data[jobIndex].createdAt)
+                      .startOf('day')
+                      .fromNow()}`}
+                  </Posted>
+                  <Salary>
+                    <SalaryTitle>Brutto, per year</SalaryTitle>
+                    <SalaryPerYear>€ {data[jobIndex].salary}</SalaryPerYear>
+                  </Salary>
+                </SalaryInfoSection>
+                <Description>{data[jobIndex].description}</Description>
                 <ApplyButtonSection>
                   <ApplyButton type="button">Apply now</ApplyButton>
                 </ApplyButtonSection>
-              )}
-            </DescriptionSection>
-          )}
-          {!isWideScreen && (
-            <>
+              </DescriptionSection>
               <InfoSection>
                 <Subtitle>Attached images</Subtitle>
                 <PicturesList>
@@ -106,45 +146,34 @@ const DetailedJob = ({ data, loading }) => {
                 </PicturesList>
               </InfoSection>
               <AdditionalInfo data={data[jobIndex]} />
+              <BackButtonSection>
+                <BackButton to="/">RETURN TO JOB BOARD</BackButton>
+              </BackButtonSection>
+
               <Subtitle>Contacts</Subtitle>
+              <ContactSection>
+                <ContactsTitle>{data[jobIndex].name}</ContactsTitle>
+                <LocationSection>
+                  <LocationIcon height="18">
+                    <use href={`${icons}#icon-Location`}></use>
+                  </LocationIcon>
+                  <ContactsText>{data[jobIndex].address} </ContactsText>
+                </LocationSection>
+                <ContactsText>{data[jobIndex].phone}</ContactsText>
+                <ContactsText>{data[jobIndex].email}</ContactsText>
+                {isLoaded ? (
+                  <LocationMap
+                    center={{
+                      lat: data[jobIndex].location.lat,
+                      lng: data[jobIndex].location.long,
+                    }}
+                  />
+                ) : (
+                  <div>Loading map...</div>
+                )}
+              </ContactSection>
             </>
           )}
-          {isWideScreen && (
-            <>
-              <AdditionalInfo data={data[jobIndex]} />
-              <InfoSection>
-                <Subtitle>Attached images</Subtitle>
-                <PicturesList>
-                  {data[jobIndex].pictures.map(image => (
-                    <PicturesListItem key={nanoid()}>
-                      <Pictures src={image} alt="" />
-                    </PicturesListItem>
-                  ))}
-                </PicturesList>
-              </InfoSection>
-            </>
-          )}
-          <ContactSection>
-            <ContactsTitle>{data[jobIndex].name}</ContactsTitle>
-            <LocationSection>
-              <LocationIcon height="18">
-                <use href={`${icons}#icon-Location`}></use>
-              </LocationIcon>
-              <ContactsText>{data[jobIndex].address} </ContactsText>
-            </LocationSection>
-            <ContactsText>{data[jobIndex].phone}</ContactsText>
-            <ContactsText>{data[jobIndex].email}</ContactsText>
-            {isLoaded ? (
-              <LocationMap
-                center={{
-                  lat: data[jobIndex].location.lat,
-                  lng: data[jobIndex].location.long,
-                }}
-              />
-            ) : (
-              <div>Loading map...</div>
-            )}
-          </ContactSection>
         </Wrapper>
       )}
     </>

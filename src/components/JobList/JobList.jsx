@@ -1,11 +1,17 @@
 import React from 'react';
 import JobListItem from './JobListItem';
 import { JobListSection } from './JobList.styled';
-import Pagination from './Pagination';
+import Pagination from './Pagination/Pagination';
 
-const JobList = ({ data, loading, jobsPerPage, totalJobs, paginate }) => {
-
-
+const JobList = ({
+  data,
+  loading,
+  jobsPerPage,
+  totalJobs,
+  paginate,
+  nextPage,
+  prevPage,
+}) => {
   return (
     <>
       {loading && <div>Loading...</div>}
@@ -14,7 +20,13 @@ const JobList = ({ data, loading, jobsPerPage, totalJobs, paginate }) => {
           <JobListItem data={item} key={item.id} />
         ))}
       </JobListSection>
-      <Pagination jobsPerPage={jobsPerPage} totalJobs={totalJobs} paginate={paginate}/>
+      <Pagination
+        jobsPerPage={jobsPerPage}
+        totalJobs={totalJobs}
+        paginate={paginate}
+        nextPage={nextPage}
+        prevPage={prevPage}
+      />
     </>
   );
 };

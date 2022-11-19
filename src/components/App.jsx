@@ -13,11 +13,10 @@ export const App = () => {
   const [jobsPerPage] = useState(5);
 
   useEffect(() => {
+    setLoading(true);
     getData().then(response => {
-      setLoading(true);
       if (response) {
         setData(response.data);
-        console.log(response);
         setLoading(false);
       } else {
         return;
@@ -28,12 +27,13 @@ export const App = () => {
   const lastJobIndex = currentPage * jobsPerPage;
   const firstJobIndex = lastJobIndex - jobsPerPage;
   const currentJobsPage = data.slice(firstJobIndex, lastJobIndex);
-  console.log(currentJobsPage);
 
   const paginate = (pageNumber) => {setCurrentPage(pageNumber)};
+  const nextPage = () => { setCurrentPage(prev =>prev+1)};
+  const prevPage = () => { setCurrentPage(prev =>prev-1)};
 
   return (
-    <Wrapper>
+    <Wrapper>  
       <Container>
         <Routes>
           <Route
@@ -45,6 +45,8 @@ export const App = () => {
                 jobsPerPage={jobsPerPage}
                 totalJobs={data.length}
                 paginate = {paginate}
+                nextPage={nextPage}
+                prevPage= {prevPage}
               />
             }
           />
